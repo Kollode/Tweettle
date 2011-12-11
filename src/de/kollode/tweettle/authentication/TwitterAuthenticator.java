@@ -33,11 +33,10 @@ public class TwitterAuthenticator extends AbstractAccountAuthenticator {
 		Bundle reply = new Bundle();
 
 		Intent intent = new Intent(this.mContext, TwitterAuthenticatorActivity.class);
-		intent.putExtra("AuthTokenType", authTokenType);  
+		intent.putExtra(AccountManager.KEY_AUTHTOKEN, authTokenType);  
 		intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);  
 
 		reply.putParcelable(AccountManager.KEY_INTENT, intent);  
-		Log.i("de.kollode.tweettle", "AddAccount End");    
 		return reply;
 	}
 

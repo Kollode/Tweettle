@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import android.accounts.Account;
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 public class TweettleActivity extends Activity {
@@ -17,6 +19,11 @@ public class TweettleActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.twitter_authenticator);
+        
+        //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.twitter.com/oauth/authorize?oauth_token=5ViEhUpsJQBGDgNnA4V2yOvEH2MB1kbK63Cb52d6uM"));
+        //this.startActivity(i);
+        
+        
         /*availableTwitterAccounts = new ArrayList<Account>(Arrays.asList(AccountManager.get(getApplicationContext()).getAccountsByType("accountType")));
         
         if(!availableTwitterAccounts.isEmpty()) {
