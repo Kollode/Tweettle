@@ -25,18 +25,18 @@
         </activity>
         
         <!-- This are the configurations for the AccountManager -->
-        <activity android:name=".authentication.TwitterAuthenticatorActivity" />
+        <activity android:name=".authentication.TwitterAuthenticatorActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+           <intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="tweettle" android:host="oauth"/>
+			</intent-filter>
+		</activity>
         <service android:name=".authentication.TwitterAuthenticatorService" >
             <intent-filter >
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
-            <intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="android.intent.category.BROWSABLE" />
-				<data android:scheme="http" android:host="www.kollode.de" android:path="/tweettle"/>
-			</intent-filter>
-
             <meta-data
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" >

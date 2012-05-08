@@ -20,7 +20,7 @@ public class TweettleActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.twitter_authenticator);
         
-        //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.twitter.com/oauth/authorize?oauth_token=5ViEhUpsJQBGDgNnA4V2yOvEH2MB1kbK63Cb52d6uM"));
+        //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("tweettle://oauth"));
         //this.startActivity(i);
         
         
