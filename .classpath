@@ -4,7 +4,9 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry kind="lib" path="assets/Libs/signpost-commonshttp4-1.2.1.1.jar"/>
-	<classpathentry kind="lib" path="assets/Libs/signpost-core-1.2.1.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ABS 4.1"/>
+	<classpathentry kind="lib" path="libs/signpost-commonshttp4-1.2.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/signpost-core-1.2.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/twitter4j-core-android-2.2.5.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
