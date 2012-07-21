@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, TweettleActivity!</string>
     <string name="app_name">Tweettle</string>
+    <string name="no_internet">No connection to the internet available.</string>
 
 </resources>

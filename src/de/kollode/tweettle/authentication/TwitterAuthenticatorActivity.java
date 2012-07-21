@@ -3,8 +3,11 @@ package de.kollode.tweettle.authentication;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthProvider;
 import android.accounts.AccountAuthenticatorActivity;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 import de.kollode.tweettle.R;
 
 public class TwitterAuthenticatorActivity extends AccountAuthenticatorActivity {
@@ -26,14 +29,23 @@ public class TwitterAuthenticatorActivity extends AccountAuthenticatorActivity {
 		super.onCreate(icicle);
 		setContentView(R.layout.twitter_authenticator);
 
-		final Uri uri = getIntent().getData();
-		if (uri != null && uri.getScheme().equals(CALLBACK_SCHEME)) {
-			new OAuthRetrieveAccessToken(this).execute(uri);
-		} else {
-			new OAuthRetrieveTempToken(this).execute();
+		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+		if(cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected()) {
+			
+			final Uri uri = getIntent().getData();
+			if (uri != null && uri.getScheme().equals(CALLBACK_SCHEME)) {
+				new OAuthRetrieveAccessToken(this).execute(uri);
+			} else {
+				new OAuthRetrieveTempToken(this).execute();
+			}
+			
+		}else {
+			Toast.makeText(this, R.string.no_internet, Toast.LENGTH_SHORT).show();
+			finish();
 		}
 	}
-	
+
 	protected static CommonsHttpOAuthConsumer getConsumer() {
 		if(consumer == null) {
 			consumer = new CommonsHttpOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
