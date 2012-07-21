@@ -3,6 +3,7 @@ package de.kollode.tweettle.authentication;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthProvider;
 import android.accounts.AccountAuthenticatorActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Uri;
@@ -25,6 +26,8 @@ public class TwitterAuthenticatorActivity extends AccountAuthenticatorActivity {
 	protected static CommonsHttpOAuthConsumer consumer;
 	protected static CommonsHttpOAuthProvider provider;
 
+	public ProgressDialog progressBar;
+	
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		setContentView(R.layout.twitter_authenticator);
@@ -37,6 +40,7 @@ public class TwitterAuthenticatorActivity extends AccountAuthenticatorActivity {
 			if (uri != null && uri.getScheme().equals(CALLBACK_SCHEME)) {
 				new OAuthRetrieveAccessToken(this).execute(uri);
 			} else {
+				progressBar = ProgressDialog.show(this, "Twitter login", "Loading...");
 				new OAuthRetrieveTempToken(this).execute();
 			}
 			
