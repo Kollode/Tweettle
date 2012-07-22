@@ -41,7 +41,6 @@ public class OAuthRetrieveAccessToken extends AsyncTask<Uri, Void, Void> {
 			if (accountType == null) {
 				accountType = "de.kollode.tweettle";
 			}
-
 			
 			Configuration settings = new ConfigurationBuilder()
 				.setOAuthConsumerKey( TwitterAuthenticatorActivity.CONSUMER_KEY )
@@ -59,9 +58,9 @@ public class OAuthRetrieveAccessToken extends AsyncTask<Uri, Void, Void> {
 			// Account Manager
 			final Account account = new Account(username, TwitterAuthenticatorActivity.ACCOUNT_TYPE);
 			accMgr.addAccountExplicitly(account, null, null);
-			accMgr.setAuthToken(account, "token", TwitterAuthenticatorActivity.getConsumer().getToken());
-			accMgr.setAuthToken(account, "tokenSecret", TwitterAuthenticatorActivity.getConsumer().getTokenSecret());
-
+			accMgr.setUserData(account, "token", TwitterAuthenticatorActivity.getConsumer().getToken());
+			accMgr.setUserData(account, "tokenSecret", TwitterAuthenticatorActivity.getConsumer().getTokenSecret());
+			
 			// Now we tell our caller, could be the Android Account Manager
 			// or even our own application
 			// that the process was successful
@@ -72,12 +71,17 @@ public class OAuthRetrieveAccessToken extends AsyncTask<Uri, Void, Void> {
 			intent.putExtra(AccountManager.KEY_AUTHTOKEN, TwitterAuthenticatorActivity.ACCOUNT_TYPE);
 			this.context.setAccountAuthenticatorResult(intent.getExtras());
 			this.context.setResult(Activity.RESULT_OK, intent);
-			this.context.finish();
 
 		} catch (Exception e) {
-			Log.e("xRelOAuth", "Error while retrieving access token", e);
+			Log.e("Tweettle AccountCReation", "Error while creating the account", e);
 		}
 
 		return null;
+	}
+	
+	@Override
+	protected void onPostExecute(Void result) {
+		super.onPostExecute(result);
+		this.context.finish();
 	}
 }

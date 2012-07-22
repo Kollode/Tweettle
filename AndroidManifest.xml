@@ -24,15 +24,21 @@
         
         <activity
             android:label="@string/app_name"
-            android:name="TweettleActivity" android:hardwareAccelerated="true">
+            android:name="TweettleActivity">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
+        <activity
+            android:label="Pick Twitter user"
+            android:name="AccountListActivity"
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
+        
         <!-- This are the configurations for the AccountManager -->
-        <activity android:name=".authentication.TwitterAuthenticatorActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        <activity android:name=".authentication.TwitterAuthenticatorActivity">
            <intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
